@@ -19,8 +19,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSpa('index.html', { root: path.join(__dirname, 'public') }))
 
 // Start server
-app.listen(process.env.PORT || config.get('app.port'), function () {
+const server = app.listen(process.env.PORT || config.get('app.port'), function () {
   debug('Started application server at port ' + (process.env.PORT || config.get('app.port')));
+});
+
+process.on('exit', function() {
+  server.close();
 });
 
 module.exports = app;

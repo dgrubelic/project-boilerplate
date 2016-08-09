@@ -1,5 +1,5 @@
 'use strict';
-const CSS_CLASSES = require('./selectors');
+const config = require('./config.json');
 
 // Listen to document.ready event
 $(document).ready(onDocumentReady);
